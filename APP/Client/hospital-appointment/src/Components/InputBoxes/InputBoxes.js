@@ -10,10 +10,12 @@ function InputBoxes(props) {
 
   const handleClick = () => {
 
-    window.zipy.identify(email, {
-      firstName: "John",
-      lastName: "Doe"
-   });
+    if (window.zipy) {
+      window.zipy.identify(email, {
+        firstName: "John",
+        lastName: "Doe"
+     });
+    }
     props.onClick({
       email,
       password,
