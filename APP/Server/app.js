@@ -10,8 +10,9 @@ const appointmentRoutes = require("./Routes/appointments");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+const mongoURI = process.env.MONGODB_URI || "mongodb+srv://shantanu:N2l1Pnxb3q5aBfkK@hospital.wg1gr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 mongoose.connect(
-  "mongodb+srv://shantanu:N2l1Pnxb3q5aBfkK@hospital.wg1gr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  mongoURI,
   {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -47,7 +48,11 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log("Connected");
-  // console.log(getSlotsForPatients(fake));
-});
+if (require.main === module) {
+  app.listen(5000, () => {
+    console.log("Connected");
+    // console.log(getSlotsForPatients(fake));
+  });
+}
+
+module.exports = app;

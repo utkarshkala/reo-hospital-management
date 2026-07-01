@@ -82,9 +82,9 @@ router.get("/patient/:patientId/:date", (req, res) => {
 
 router.delete("/patient/:appointmentId/:patientId/:date", (req, res) => {
   const appointmentId = req.params.appointmentId;
-  const patientID = req.params.patientID;
+  const patientID = req.params.patientId;
   const date = req.params.date;
-  Appointment.remove({ _id: appointmentId })
+  Appointment.deleteOne({ _id: appointmentId })
     .exec()
     .then((result) => {
       Appointment.find({ patientId: patientID, date: date })
