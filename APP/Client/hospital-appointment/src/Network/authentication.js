@@ -24,7 +24,11 @@ export const hospitalLogin = (credentials) => {
         resolve(res.data);
       })
       .catch((err) => {
-        reject(err.response.data);
+        if (err.response) {
+          reject(err.response.data);
+        } else {
+          reject(err);
+        }
       });
   });
 };
@@ -37,7 +41,11 @@ export const patientSignUp = (credentials) => {
         resolve(res.data);
       })
       .catch((err) => {
-        reject(err.response.data);
+        if (err.response) {
+          reject(err.response.data);
+        } else {
+          reject(err);
+        }
       });
   });
 };
