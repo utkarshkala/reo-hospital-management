@@ -30,6 +30,7 @@ export const LoginHospital = (credentials) => (dispatch) => {
       .then((res) => {
         dispatch({
           type: actionTypes.LOGIN,
+          payload: res,
         });
         resolve();
       })

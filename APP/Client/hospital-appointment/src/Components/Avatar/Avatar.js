@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 function Avatar({ userDetails }) {
   const displayInitials = () => {
     let initials;
-    if (userDetails) {
+    if (userDetails && userDetails.name) {
       const name = userDetails.name;
       const nameArray = name.split(" ");
       initials = nameArray[0][0] + nameArray[1][0];

@@ -49,8 +49,9 @@ app.use((error, req, res, next) => {
 });
 
 if (require.main === module) {
-  app.listen(5000, () => {
-    console.log("Connected");
+  const port = process.env.PORT || 5001;
+  app.listen(port, () => {
+    console.log(`Connected on port ${port}`);
     // console.log(getSlotsForPatients(fake));
   });
 }
